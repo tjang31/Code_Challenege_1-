@@ -1,26 +1,26 @@
 /* jshint esversion: 6 */
-console.log( 'js' );
-let number = 0;
-/*$(document).ready(function() {
-  $('#generateButton').on('click', function() {
-
-  }); // end generateButton
-}); // end doc ready
-*/
+let count = 0;
 
 $(document).ready( readyNow );
 
-  function readyNow(){
+function readyNow (){
   // calls when document is ready
-  console.log( 'JQ' );
-  $('#generateButton').on('click', readyNow());
+  $('#generateButton').on('click', appendDiv);
+  $('#appendHere').on('click', '.swapButton', swapColors);
+  $('#appendHere').on('click', '.deleteButton', deleteDiv);
+} // end document readyNow
 
-  //}); // end generate click function
-  //$('#generateButton').append('<p>' + number + '</p>');
-  //$('#swapButton').on('click', count);
-  //$('#deleteButton').on('click', count);
-} // end document readyNOw
+function appendDiv () {
+  count++;
+  let newDiv = '<div class="newDiv"><p>' + count + '</p> <button class="swapButton">Swap</button> <button class="deleteButton"> Delete </button> </div>';
+  $('#appendHere').append(newDiv);
+}
 
-function count(){
+function swapColors() {
+  $(this).parent().toggleClass('yellow');
+//console.log('swap');
+}
 
-} // end function count
+function deleteDiv () {
+  $(this).parent().remove();
+}
